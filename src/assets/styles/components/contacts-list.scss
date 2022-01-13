@@ -1,0 +1,133 @@
+.contactify-contacts-table {
+  width: 75%;
+  background-color: white;
+  height: 100%;
+
+
+  &__header {
+    display: flex;
+    align-items: center;
+    background-color: #4eb6bd;
+    padding: 0 20px;
+    height: 62px;
+    position: relative;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+
+    &-name {
+      width: 180px;
+      margin-right: 20px;
+
+      .sort-icon {
+        margin-left: 5px;
+        cursor: pointer;
+      }
+    }
+
+    &-city {
+      width: 220px;
+      margin-right: 20px;
+    }
+
+    &-email {
+      width: 200px;
+      margin-right: 20px;
+    }
+
+    &-phone {
+      text-align: right;
+      width: 240px;
+      padding-right: 30px;
+    }
+
+    &-columns-selection-wrapper {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &.open {
+        background-color: #ffffff;
+        .column-selection-toggle {
+          color: #4eb6bd;
+        }
+      }
+
+      &.close {
+        background-color: transparent;
+        .column-selection-toggle {
+          color: #ffffff;
+        }
+      }
+
+      .column-selection-toggle {
+        display: block;
+        cursor: pointer;
+      }
+
+      .columns-selection-list {
+        width: 200px;
+        height: 200px;
+        background-color: white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translateY(100%);
+        color: #000000;
+        ul {
+          list-style: none;
+        }
+      }
+    }
+  }
+
+  .contact-item {
+    width: 100%;
+    display: flex;
+    background-color: white;
+    border-bottom: 1px solid #ecf0f2;
+    font-size: 16px;
+    line-height: 29px;
+    color: #4f4d43;
+    font-weight: 400;
+    font-family: "Open Sans", sans-serif;
+    padding: 10px 20px;
+    cursor: pointer;
+
+    &:hover, &.active {
+      background-color: #d8e1e5;
+    }
+
+    &__name {
+      width: 180px;
+      margin-right: 20px;
+    }
+
+    &__city {
+      width: 220px;
+      margin-right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__email {
+      width: 200px;
+      margin-right: 20px;
+    }
+
+    &__phone {
+      text-align: right;
+      width: 240px;
+      padding-right: 30px;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

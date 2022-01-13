@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Header from "./Header";
 import ContactsList from "./ContactsList";
+import ContactPreview from "./ContactPreview";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import {useActions} from "../hooks/useActions";
 import logo from "./../assets/images/React-icon.svg";
@@ -13,7 +14,7 @@ const App = () => {
         getContacts()
     }, [])
 
-    const { data, error, loading } = useTypedSelector(
+    const { loading, error, showSelectedContactPreview } = useTypedSelector(
         (state) => state.contacts
     );
 
@@ -24,7 +25,10 @@ const App = () => {
                     <img className="contactify-loader" src={logo} alt=""/>
                 </div> : <>
                     <Header />
-                    <ContactsList />
+                    <div className="contactify-contacts-section">
+                        <ContactsList />
+                        {showSelectedContactPreview && <ContactPreview />}
+                    </div>
                 </>}
 
             </div>

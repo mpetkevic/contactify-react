@@ -12,17 +12,53 @@ export const getContacts = () => {
         try {
             const { data } = await axios.get('https://contactify-api.herokuapp.com/api/contacts');
 
-            console.log("MS_NAMES", data)
-
             dispatch({
                 type: ActionType.GET_CONTACTS_SUCCESS,
                 payload: data,
             });
-        } catch (err) {
-            // dispatch({
-            //     type: ActionType.SEARCH_REPOSITORIES_ERROR,
-            //     payload: err.message,
-            // });
+        } catch (err:any) {
+            const message = err.message
+            dispatch({
+                type: ActionType.GET_CONTACTS_ERROR,
+                payload: message,
+            });
         }
     };
 };
+
+export const sortContactsByName = (filter: string) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.FILTER_CONTACTS_BY_NAME,
+            payload: filter,
+        });
+    }
+}
+
+export const showActiveUsers = (checkStatus: Boolean) => {
+    return (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.SHOW_ACTIVE_USERS,
+            payload: checkStatus,
+        });
+    }
+}
+
+export const getSelectedContact = (contactId: string) => {
+    return async (dispatch: Dispatch<Action>) => {
+        dispatch({
+            type: ActionType.GET_SELECTED_CONTACT,
+        });
+
+        try {
+            const { data } = await axios.get('https://contactify-api.herokuapp.com/api/contacts/' + contactId);
+
+            dispatch({
+                type: ActionType.GET_SELECTED_CONTACT_SUCCESS,
+                payload: data,
+            });
+        } catch (err: any) {
+            console.log({err})
+        }
+    };
+}
