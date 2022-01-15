@@ -1,5 +1,5 @@
 import {ActionType} from "../action-types";
-import {Contact} from "../../interfaces/contactInterfaces";
+import {Contact, ContactsFilter} from "../../interfaces/contactInterfaces";
 
 interface GetContactsAction {
     type: ActionType.GET_CONTACTS;
@@ -7,7 +7,10 @@ interface GetContactsAction {
 
 interface GetContactsSuccessAction {
     type: ActionType.GET_CONTACTS_SUCCESS;
-    payload: Contact[];
+    payload: {
+        data: Contact[],
+        cities: string[]
+    };
 }
 
 interface GetContactsErrorAction {
@@ -19,10 +22,20 @@ interface FilterContactsByName {
     type: ActionType.FILTER_CONTACTS_BY_NAME;
     payload: string;
 }
+interface FilterContacts {
+    type: ActionType.FILTER_CONTACTS;
+    payload: {
+        filter: ContactsFilter,
+        data: Contact[]
+    };
+}
 
-interface ShowActiveUsers {
-    type: ActionType.SHOW_ACTIVE_USERS;
-    payload: Boolean
+interface SortContacts {
+    type: ActionType.SORT_CONTACTS
+    payload: {
+        sortOrder: string,
+        data: Contact[],
+    }
 }
 
 interface GetSelectedContact {
@@ -40,6 +53,7 @@ export type Action =
     | GetContactsSuccessAction
     | GetContactsErrorAction
     | FilterContactsByName
-    | ShowActiveUsers
+    | FilterContacts
+    | SortContacts
     | GetSelectedContact
     | GetSelectedContactSuccess

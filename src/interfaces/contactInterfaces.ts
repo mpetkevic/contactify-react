@@ -7,3 +7,9 @@ export interface Contact{
     email: string,
     phone: string
 }
+
+export interface ContactsFilter {
+    name: string,
+    city: string | null,
+    isActive: Boolean
+}

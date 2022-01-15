@@ -4,14 +4,14 @@ import {useActions} from "../hooks/useActions";
 import {Contact} from "../interfaces/contactInterfaces";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faListUl, faArrowDown, faArrowUp, faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
+import {sortContacts} from "../state/action-creators";
 
 const ContactsList = () => {
     const [isColumnSectionOpen, setColumnSelectionStatus] = useState(false)
-    const [sortOrder, setSortOrder] = useState('asc')
 
-    const {getSelectedContact} = useActions()
+    const {getSelectedContact, sortContacts} = useActions()
 
-    const {data, filter, showActiveUsers, selectedContact} = useTypedSelector(
+    const {filteredContacts, selectedContact, sortOrder} = useTypedSelector(
         (state) => state.contacts
     );
 
@@ -19,32 +19,12 @@ const ContactsList = () => {
       setColumnSelectionStatus(!isColumnSectionOpen)
     }
 
-    const onChangeSortOrder = (order: string) => {
-        setSortOrder(order)
-    }
-
     const onUserSelect = (user: Contact) => {
         getSelectedContact(user.id)
     }
 
-    const contacts = data?.sort((contactA: Contact, contactB: Contact) => {
-        if(sortOrder === 'asc' && contactA.name > contactB.name) {
-            return 1
-        } else {
-            return -1
-        }
-    }).filter(contact => {
-        if(showActiveUsers) {
-            if(contact.isActive) {
-                return contact
-            }
-        } else {
-            return contact
-        }
-    })
-        .map(contact => {
+    const contacts = filteredContacts?.map(contact => {
         const surnameFirstSymbol = contact.surname[0] + '.'
-        if(contact.name.toLowerCase().includes(filter.toLowerCase())) {
             return (
                 <div
                     key={contact.id}
@@ -61,19 +41,17 @@ const ContactsList = () => {
                     <div className='contact-item__phone'>{contact.phone}</div>
                 </div>
             )
-        }
     })
 
-    console.log({sortOrder})
     return (
         <div className="contactify-contacts-table">
             <div className="contactify-contacts-table__header">
                 <div className="contactify-contacts-table__header-name">
                     Name
                     {sortOrder === 'asc' ?
-                        <FontAwesomeIcon className='sort-icon' onClick={() => onChangeSortOrder('desc')} icon={faArrowUp}/>
+                        <FontAwesomeIcon className='sort-icon' onClick={() => sortContacts('desc')} icon={faArrowUp}/>
                         :
-                        <FontAwesomeIcon className='sort-icon' onClick={() => onChangeSortOrder('asc')} icon={faArrowDown}/>
+                        <FontAwesomeIcon className='sort-icon' onClick={() => sortContacts('asc')} icon={faArrowDown}/>
                     }
 
                 </div>

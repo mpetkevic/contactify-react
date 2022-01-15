@@ -39,14 +39,60 @@
       }
     }
 
+    &__city-selection-wrapper {
+      position: relative;
+
+      .cities-selection-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 180px;
+        transform: translateY(100%);
+        background-color: white;
+        z-index: 100;
+        box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.51);
+
+        .city-selection-item {
+          text-align: left;
+          font-size: 16px;
+          line-height: 29px;
+          color: #4f4d43;
+          font-weight: 400;
+          font-family: "Open Sans", sans-serif;
+          padding: 5px;
+          border-bottom: 1px solid #ecf0f2;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #d8e1e5;
+          }
+        }
+      }
+    }
+
     &__city-select {
-     cursor: pointer;
+      cursor: pointer;
+      position: relative;
 
       .icon-down {
         padding-bottom: 2px;
         font-size: 20px;
       }
 
+    }
+
+    &__filter-button {
+      margin-left: 20px;
+      width: 106px;
+      height: 35px;
+      border-radius: 18px;
+      background-color: #4eb7be;
+      font-size: 14px;
+      color: #ffffff;
+      font-weight: 400;
+      font-family: "Open Sans", sans-serif;
+      border: none;
+      cursor: pointer;
     }
 
 
