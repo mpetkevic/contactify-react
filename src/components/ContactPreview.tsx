@@ -36,7 +36,6 @@ const ContactPreview = () => {
                     </div>
                 </>
             )}
-
         </div>
     )
 }
