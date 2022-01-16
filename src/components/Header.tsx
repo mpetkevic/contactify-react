@@ -4,8 +4,6 @@ import {useActions} from "../hooks/useActions";
 import {useTypedSelector} from "../hooks/useTypedSelector";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faEye } from "@fortawesome/free-solid-svg-icons";
-import {filterContacts} from "../state/action-creators";
-
 
 const Header = () => {
 
@@ -15,7 +13,7 @@ const Header = () => {
     const [isCitiesListOpen, setCitiesListStatus] = useState(false)
     const [selectedCity, setSelectedCity] = useState<string | null>(null)
 
-    const {data, cities} = useTypedSelector(
+    const {cities} = useTypedSelector(
         (state) => state.contacts
     );
 
@@ -28,7 +26,6 @@ const Header = () => {
     }
 
     const onShowActiveToggle = () => {
-        // showActiveUsers(!isActiveContactsShow)
         setActiveContactsShow(!isActiveContactsShow)
     }
 
@@ -42,7 +39,6 @@ const Header = () => {
             city: selectedCity,
             isActive: isActiveContactsShow,
         }
-        console.log("Filter", {filter})
         filterContacts(filter)
     }
 

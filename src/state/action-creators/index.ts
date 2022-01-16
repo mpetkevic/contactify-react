@@ -4,7 +4,6 @@ import { ActionType } from '../action-types';
 import { Action } from '../actions';
 import {store} from "../store";
 import { Contact ,ContactsFilter} from "../../interfaces/contactInterfaces";
-import contactsList from "../../components/ContactsList";
 
 export const getContacts = () => {
     return async (dispatch: Dispatch<Action>) => {
@@ -45,7 +44,6 @@ export const sortContactsByName = (filter: string) => {
 
 export const filterContacts = (filter: ContactsFilter) => {
     const contacts = store.getState().contacts.data;
-    const sortOrder = store.getState().contacts.sortOrder;
 
     const filtered = contacts.filter(contact => {
 
@@ -55,9 +53,9 @@ export const filterContacts = (filter: ContactsFilter) => {
         }
 
         if (filter.isActive) {
-            return contact.name.includes(filter.name) && contact.isActive === filter.isActive && filterCity()
+            return contact.name.toLowerCase().includes(filter.name.toLowerCase()) && contact.isActive === filter.isActive && filterCity()
         } else {
-            return contact.name.includes(filter.name) && filterCity()
+            return contact.name.toLowerCase().includes(filter.name.toLowerCase()) && filterCity()
         }
     });
 

@@ -14,10 +14,25 @@
 
 
 .contactify-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
   .contactify-loader {
     animation: loader-spin 4s linear infinite;
   }
 
+}
+
+h1 {
+  color: white;
+  font-size: 23px;
+  line-height: 25px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  width: 25%;
+  text-align: center;
 }
 
 .contactify-contacts-section {

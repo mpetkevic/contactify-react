@@ -21,6 +21,7 @@ const CustomCheckBox = (props: CheckBoxProps) => {
             className="custom-checkbox"
             type="checkbox"
             name="show-active"
+            onChange={() =>{}}
             checked={props.checked}/>
         <label
             htmlFor="show-active"

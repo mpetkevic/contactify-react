@@ -50,7 +50,7 @@
         transform: translateY(100%);
         background-color: white;
         z-index: 100;
-        box-shadow: 0px 0px 8px 1px rgba(0,0,0,0.51);
+        box-shadow: 0 0 8px 1px rgba(0,0,0,0.51);
 
         .city-selection-item {
           text-align: left;
@@ -98,13 +98,4 @@
 
   }
 
-  h1 {
-    color: white;
-    font-size: 23px;
-    line-height: 25px;
-    font-family: 'Open Sans', sans-serif;
-    text-transform: uppercase;
-    width: 25%;
-    text-align: center;
-  }
 }

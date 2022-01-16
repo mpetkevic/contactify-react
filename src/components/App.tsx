@@ -14,7 +14,7 @@ const App = () => {
         getContacts()
     }, [])
 
-    const { loading, error, showSelectedContactPreview } = useTypedSelector(
+    const { loading, showSelectedContactPreview } = useTypedSelector(
         (state) => state.contacts
     );
 
@@ -22,6 +22,7 @@ const App = () => {
         <div className="contactify-main">
             <div className="container">
                 {loading ? <div className='contactify-loader-wrapper'>
+                    <h1>Contactify</h1>
                     <img className="contactify-loader" src={logo} alt=""/>
                 </div> : <>
                     <Header />
