@@ -4,7 +4,7 @@ Project repo: https://github.com/mpetkevic/contactify-react
 
 Live app: https://contactify-react.herokuapp.com (P.S. The initial load may take some time to start.)
 
-##Run Locally
+## Run Locally
 
 1. Download code
 2. Run `npm install`
