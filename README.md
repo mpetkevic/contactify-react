@@ -27,5 +27,3 @@ P.S. if it doesn't open, go to [http://localhost:3000](http://localhost:3000) on
 - Plain CSS (SASS preprocessor)
 
 
-## P.S.
-`main` branch used for automatic deployment for live app.
